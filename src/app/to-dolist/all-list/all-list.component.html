@@ -1,0 +1,21 @@
+<div class="col">
+    <div class="row">
+        <div class="col">
+            <h1>All To<span class="text-danger">-</span>Do List<span class="text-danger">:</span></h1>
+            <hr>
+            <ul class="list-group text-left">
+                <li class="list-group-item list-group-item-action " style="cursor: pointer;" *ngFor="let item of datedlist | mapToList ;let i=index" [ngClass]="{'bg-success':item.value.state==='done','bg-warning':item.value.state==='doing'}">
+                    <app-list-item [index]="i" [item]='item'></app-list-item>
+                </li>
+            </ul>
+            <br>
+            <ul class="list-group text-left">
+                <li class="list-group-item list-group-item-action" style="cursor: pointer;" *ngFor="let item of noDateList | mapToList ;let i=index" [ngClass]="{'bg-s':item.value.state==='done','bg-w':item.value.state==='doing'}">
+                    <app-list-item [index]="i" [item]='item'></app-list-item>
+                </li>
+            </ul>
+            <br>
+            <button class="btn btn-success" (click)="addList()">Add</button>
+        </div>
+    </div>
+</div>

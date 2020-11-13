@@ -1,0 +1,8 @@
+
+            <h1>Today<span class="text-danger">'</span>s to do list<span class="text-danger">:</span></h1>
+            <hr>
+            <ul class="list-group text-left">
+                <li class="list-group-item list-group-item-action" style="cursor: pointer;" *ngFor="let item of list | mapToList ;let i=index">
+                    <app-list-item [index]="i" [item]='item' [today]='true'></app-list-item>
+                </li>
+            </ul>

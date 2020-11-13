@@ -1,0 +1,31 @@
+<div class="row-12 d-flex justify-content-between align-items-center">
+    <div class="pl-0 m-0 d-flex" [ngClass]="{'col-10': today || item.value.date!=='' ,'col-9': !today||item.value.date==='' }" data-toggle="collapse" attr.data-target="#{{item.id}}" aria-expanded="false"
+        attr.aria-controls="{{item.id}}">
+        <h3 class="col m-0 p-0">{{ item.value.name }}</h3>
+        <div class="col p-0 d-flex align-items-center justify-content-end" *ngIf="item.value.date!==''"><span
+                class="text-right">{{ item.value.date }}</span></div>
+    </div>
+    <div class="btn-group" *ngIf='!today && edit'>
+        <button class="btn btn-success" (click)="setState('doing')" *ngIf="item.value.date===''&& item.value.state==='undefined'">start</button>
+        <button class="btn btn-primary">edit</button>
+        <button class="btn btn-danger">delete</button>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <div class="collapse" id="{{item.id}}" #listcol>
+            <p *ngIf="item.value.about!==''">
+                {{ item.value.about }}
+            </p>
+            <div class="card card-body">
+
+
+                <li class="list-group-item" *ngFor="let task of item.value.tasks;let i = index">
+                    <app-item [tIndex]='i' [lIndex]="item.id" [task]='task' (rIndex)="removeTask($event)"></app-item>
+                </li>
+
+
+            </div>
+        </div>
+    </div>
+</div>
